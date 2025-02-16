@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CBCSpace
 {
-    //ŒvŽZ—p
+    //è¨ˆç®—ç”¨
     public class CBCCalculation
     {
 
