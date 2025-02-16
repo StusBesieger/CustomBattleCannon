@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{81f1e019-c8f5-4996-b43a-8bc2bbf43d2f}") = "CBCAssem", "CBCAssem\CBCAssem.csproj", "{7fd6316f-e660-47c7-aa10-17e1a7540cd5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7fd6316f-e660-47c7-aa10-17e1a7540cd5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7fd6316f-e660-47c7-aa10-17e1a7540cd5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7fd6316f-e660-47c7-aa10-17e1a7540cd5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7fd6316f-e660-47c7-aa10-17e1a7540cd5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8d38824a-ddde-4d5d-93ff-233f21962cc8}
+	EndGlobalSection
+EndGlobal
