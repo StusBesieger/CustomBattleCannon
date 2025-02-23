@@ -35,18 +35,22 @@ namespace CBCSpace
         public static GameObject ShootingEffectNumber;
         private ShootingPoolManager PNumber;
         private ShootingEffectManager ENumber;
-        private int i = 1;
+        private int i = 1; //発射体と発射元を紐づけるID
 
 
         public MSlider caliber;
         public MSlider barrellength;
+        public MKey FireKey;
 
-        public float CaliberV;
-        public float BarrelLengthV;
+        public float CaliberV = 1f;//口径mm(単位は1ブロック=50cmとする)
+        public float BarrelLengthV = 1f;//砲身長、口径×何倍か
+        public float ReloadTime = 1f;//装填時間
 
         public int ProjectilePool = 1;
 
         private int ProjectileNum = 0;
+
+        private float ReloadingTime;//装填完了までの時間
 
         public override void OnBlockPlaced()
         {
@@ -94,13 +98,17 @@ namespace CBCSpace
         public override void OnSimulateStart()
         {
             base.OnSimulateStart();
+            ReloadTime = ((float)Math.Pow(1.04, CaliberV / 2) * 1.25f - 1.2f) * (float)Math.Log(BarrelLengthV, 25f);
+            ProjectilePool =(int)(5f * (float)Math.Ceiling(1f / ReloadTime));
             //プール内に弾のゲームオブジェクト生成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-            while(ProjectileNum < ProjectilePool)
+            while (ProjectileNum < ProjectilePool)
             {
             
                 ProjectileNum++;
             }
             //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+            FireKey = GetKey(Module.FireKey);
+            ReloadingTime = ReloadTime;
         }
         public override void OnSimulateStop()
         {
@@ -114,8 +122,29 @@ namespace CBCSpace
             base.SimulateUpdateAlways();
 
         }
+        public override void SimulateFixedUpdateAlways()
+        {
+            base.SimulateFixedUpdateAlways();
+            //装填完了かどうか
+            if(ReloadingTime <= 0f)
+            {
+                //発砲キーを押しているかどうか
+                if (FireKey.IsPressed || FireKey.EmulationPressed())
+                {
+
+                    FireProjectile();
+                    ReloadingTime = ReloadTime;
+                }
+
+            }
+            else
+            {
+                ReloadingTime = ReloadingTime - Time.fixedDeltaTime;
+            }
+        }
         public void FireProjectile()
         {
+            //弾オブジェクトで非有効化のオブジェクトを探し、その弾オブジェクトを使う
 
         }
     }

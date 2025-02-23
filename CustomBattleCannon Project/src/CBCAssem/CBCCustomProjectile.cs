@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CBCSpace
 {
-    // 遐ｲ蠑ｾ縺ｮ蝓ｺ遉弱せ繧ｯ繝ｪ繝励ヨ
+    // 砲弾の基礎スクリプト
     public class CBCCustomProjectile : MonoBehaviour
     {
 
